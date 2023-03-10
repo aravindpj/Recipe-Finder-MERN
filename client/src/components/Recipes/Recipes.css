@@ -1,0 +1,107 @@
+main{
+    margin-top: 10px;
+    
+}
+.recipes-found span{
+    font-size: 14px;
+    color: rgb(251, 171, 21);
+    padding-left: 20px;
+}
+.recipes-found{
+    font-size: 15px;
+    color: grey;
+}
+/* .flter-action{
+    padding-right: 65px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 12px;
+    border-radius: 12px;
+    border: none;
+    background-color: orange;
+    font-weight: 700;
+    cursor: pointer;
+    position: relative;
+} */
+.head-section{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.heading{
+    margin-left: 9px;
+}
+/* .menu{
+    position: absolute;
+    opacity: 0;
+} */
+
+/*********card section **********/
+p{
+    padding: 0;
+    margin: 0;
+}
+.card-body{
+    margin-top: 18px;
+    display: grid;
+    grid-template-columns: 280px 280px 280px 280px;
+    gap: 30px;
+    place-content: center;
+}
+.card{
+    object-fit: cover;
+    width: 280px;
+    height: 260px;
+    background-color:rgb(250, 250, 250);
+    border-radius: 20px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.title1,
+.title2{
+    padding: 5px;
+    font-size: 14px;
+}
+.title1{
+    color: orange;
+    font-weight: 600;
+    letter-spacing: 3px;
+}
+.title2 span{
+    color: 	#198754;
+}
+.card{
+    margin-top: 20px;
+}
+.card img {
+    width: 100%;
+    border-top-right-radius:20px ;
+    border-top-left-radius:20px ;
+}
+.info{
+    margin-left: 15px;
+    margin-right: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.add-wish{
+    cursor: pointer;
+}
+.clearsearch{
+   padding-left: 12px;
+   padding-right: 12px;
+   padding-top: 8px;
+   padding-bottom: 8px;
+   background-color: orange;
+   border: none;
+   margin-top: 10px;
+   margin-left: 10px;
+   cursor: pointer;
+}
+@media (max-width:695px){
+    .card-body{
+        grid-template-columns: 280px;
+        place-content: center;
+    }
+    
+}
