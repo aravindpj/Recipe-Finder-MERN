@@ -18,7 +18,7 @@ function Viewdetail() {
   },[])
   return (
     <>
-        <Recipeview recipe={recipe}/>
+        <Recipeview recipe={recipe} fetchRecipe={fetchRecipe}/>
     </>
   )
 }

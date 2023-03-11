@@ -4,17 +4,41 @@ import user from '../../assets/user.jpg'
 import sendIcon from '../../assets/icons/send.png'
 import './Recipeview.css'
 import LoadingSpinner from '../Spinner/Spinner'
-function Recipeview({recipe}) {
+import Cookies from 'js-cookie'
+function Recipeview({recipe,fetchRecipe}) {
+   const token = Cookies.get("token")
    const [loading,setLoading]=useState(true)
-   console.log(recipe.ingredients);
-   console.log(recipe);
+   const [loadingReview,setLoadingreview]=useState(false)
+  const [reviewData,setReview]=useState({
+   review:"",
+  })
 
+ async function handleSubmit(e){
+   e.preventDefault()
+   if(!token) return alert('Login to continue')
+   setLoadingreview(true)
+   console.log(token);
+   const res=await fetch(`https://recipe-finder-4aj5.onrender.com/api/v1/recipe/review/${recipe._id}`,{
+      method:"POST",
+      headers:{
+         Authorization:`Bearer ${token}`,
+        "content-type":"application/json"
+      },
+      body:JSON.stringify(reviewData)
+   })
+   if(res.ok){
+      setLoadingreview(false)
+      fetchRecipe(recipe._id)
+   }
+
+  }
+   
    useEffect(()=>{
       setTimeout(() => {
          setLoading(false)
       },1000);
    },[])
-
+ 
   return (
      <>
        {loading ? <LoadingSpinner/> :
@@ -55,15 +79,22 @@ function Recipeview({recipe}) {
         </div>
         <div className="reviews">
            <h2>Reviews</h2>
-           <form className="comment-sec">
-             <input type="text" className='comment'placeholder='Comment here...'/>
+           {loadingReview && <p style={{color:"orange",fontSize:"13px",padding:"10px"}}>Loading....</p>}
+           <form onSubmit={handleSubmit} className="comment-sec">
+             <input type="text" name="review" onChange={(e)=>setReview({[e.target.name]:e.target.value})} className='comment'placeholder='Comment here...'/>
              <button type='submit' className="send"><img src={sendIcon} alt="" /></button>
            </form>
-           {
-           
-            console.log( recipe?.reviews)
-           }
 
+           {
+               recipe.reviews?.map((data)=>
+               <>
+                  <div className="review-card">
+                     <p className='user-name'>@{data.user.fullname}</p>
+                     <p className='review-text'>{data.review}</p>
+               </div>
+               </>
+            ).reverse()
+           }
         </div>
      </div>
         
