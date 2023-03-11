@@ -10,7 +10,7 @@ function App() {
   const dispatch=useDispatch()
   const fetchUser=async () => {
     if(!token) return
-     const res=await fetch('http://localhost:5000/api/v1/user/getaccount',{
+     const res=await fetch('https://recipe-finder-4aj5.onrender.com/api/v1/user/getaccount',{
       method:"GET",
       headers:{
         Authorization:`Bearer ${token}`

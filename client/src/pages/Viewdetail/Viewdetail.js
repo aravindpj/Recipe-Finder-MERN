@@ -7,7 +7,7 @@ function Viewdetail() {
   const [recipe,setRecipe]=useState([])
   console.log(recipeId);
   const fetchRecipe=async (id)=>{
-    const res = await fetch(`http://localhost:5000/api/v1/recipe/${id}`)
+    const res = await fetch(`https://recipe-finder-4aj5.onrender.com/api/v1/recipe/${id}`)
     if(res.ok){
       const {data}= await res.json()
       setRecipe(data) 

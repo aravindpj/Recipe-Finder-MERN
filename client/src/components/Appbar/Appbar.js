@@ -19,7 +19,7 @@ export default function Appbar({setData}){
     }
     const fetchSearchrecipe=async (query)=>{
         if (query === "") return
-        const res=await fetch(`http://localhost:5000/api/v1/recipe?search=${query}`)
+        const res=await fetch(`https://recipe-finder-4aj5.onrender.com/api/v1/recipe?search=${query}`)
         if(res.ok){
           const {data}=await res.json()
           setData(data)
@@ -69,7 +69,7 @@ export default function Appbar({setData}){
             </>}
             {
                 authenticated && <>
-                    <img className='profile' src={`http://localhost:5000/user/${user.profile}`} />
+                    <img className='profile' src={`https://recipe-finder-4aj5.onrender.com/user/${user.profile}`} />
                     <p className='name'>{user.fullname}</p>
                     <Link to="/addrecipe"><button className='addbtn'>Add Recipe</button></Link>
                     <button className='signin' onClick={_logout} >Logout</button>

@@ -12,7 +12,16 @@ const recipeSchema=new Schema({
     serving:Number,
     ingredients:[{ingredient:String}],
     imageurl:String
+},{
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
 })
+
+recipeSchema.virtual('reviews',{
+    ref:'Review',
+    foreignField:'recipe',
+    localField:'_id'
+  })
 
 const Recipe=model('Recipe',recipeSchema)
 module.exports=Recipe

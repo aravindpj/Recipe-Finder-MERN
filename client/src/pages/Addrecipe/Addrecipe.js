@@ -22,7 +22,9 @@ function Addrecipe() {
   }
   async function handleSubmit(e){
     e.preventDefault()
+    
     if(form.title==="") return console.log('Please enter details');
+    isLoading(true)
     const ingredients = Object.entries(ing)
     .filter(ing=>ing[0].startsWith('ing'))
     .map(ing=>{
@@ -33,7 +35,7 @@ function Addrecipe() {
       ...form,ingredients
     }
     console.log(data);
-    const res=await fetch(`http://localhost:5000/api/v1/recipe/create`,{
+    const res=await fetch(`https://recipe-finder-4aj5.onrender.com/api/v1/recipe/create`,{
       method:"post",
       body:JSON.stringify(data),
       headers:{
@@ -41,14 +43,9 @@ function Addrecipe() {
         "content-type":"application/json"
       }
     })
-    isLoading(true)
     if (res.ok){
-       const data=await res.json()
-       console.log(data);
-       setTimeout(() => {
-         isLoading(false)
-       }, 4000);
-       
+      //  const data=await res.json()
+       isLoading(false)
     }
     
   }

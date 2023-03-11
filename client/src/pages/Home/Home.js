@@ -7,20 +7,19 @@ import LoadingSpinner from '../../components/Spinner/Spinner'
 
 export default  function Home() {
   const [recipes,setRecipes]=useState([])
-  const [loading,setLoading]=useState(true)
+  const [loading,setLoading]=useState(false)
 
   const fetchRecipe=async ()=>{
-    const res=await fetch(`http://localhost:5000/api/v1/recipe`)
+    setLoading(true)
+    const res=await fetch(`https://recipe-finder-4aj5.onrender.com/api/v1/recipe`)
     if(res.ok){
+      setLoading(false)
       const {data}=await res.json()
       setRecipes(data)
     }
  }
  useEffect(()=>{
     fetchRecipe()
-    setTimeout(() => {
-       setLoading(false)
-    },1000);
  },[])
 
   return (

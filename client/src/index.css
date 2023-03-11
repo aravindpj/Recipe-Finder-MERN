@@ -3,7 +3,6 @@ html { scroll-behavior: smooth; }
 body{
   padding-left: 100px;
   padding-right: 100px;
-  padding-bottom: 30px;
   font-family: 'Roboto', sans-serif;
 }
 @media (max-width:695px){

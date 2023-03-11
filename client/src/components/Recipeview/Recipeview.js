@@ -59,14 +59,11 @@ function Recipeview({recipe}) {
              <input type="text" className='comment'placeholder='Comment here...'/>
              <button type='submit' className="send"><img src={sendIcon} alt="" /></button>
            </form>
-            <div className="review-card">
-                <p className='user-name'>Steve</p>
-                 <p className='review-text'> Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Sed porttitor lectus nibh.</p>
-            </div>
-            <div className="review-card">
-                <p className='user-name'>Steve</p>
-                 <p className='review-text'> Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Sed porttitor lectus nibh.</p>
-            </div>
+           {
+           
+            console.log( recipe?.reviews)
+           }
+
         </div>
      </div>
         

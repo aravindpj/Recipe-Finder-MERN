@@ -6,20 +6,21 @@ import LoadingSpinner from '../../components/Spinner/Spinner'
 export default  function Myrecipe() {
    const [userRecipe,setRecipe]=useState([])
    const token = Cookies.get("token")
-  
+  const [loading ,setLoading]=useState(false)
    const fetchUserrecipe=async function(){
-     
-      fetch(`http://localhost:5000/api/v1/user/getmyrecipe`,{
+      setLoading(true)
+      fetch(`https://recipe-finder-4aj5.onrender.com/api/v1/user/getmyrecipe`,{
          headers:{
             Authorization:`Bearer ${token}`
          }
       }).then((res)=>res.json()).then(({data})=>{
          console.log(data) 
          setRecipe(data)
+         setLoading(false)
       })
    }
    async function handleDelete(id){
-      const res=await fetch(`http://localhost:5000/api/v1/recipe/${id}`,{
+      const res=await fetch(`https://recipe-finder-4aj5.onrender.com/api/v1/recipe/${id}`,{
          method:"DELETE",
          headers:{
             Authorization:`Bearer ${token}`
@@ -36,6 +37,8 @@ export default  function Myrecipe() {
    },[])
   return (
     <>
+    {
+      loading ? <LoadingSpinner/> :
          <div className='myrecipe'>
          {
             userRecipe?.map((recipe)=>{
@@ -57,8 +60,9 @@ export default  function Myrecipe() {
                )
             })
          }
-
          </div>
+    }
+
     </>
   )
 }

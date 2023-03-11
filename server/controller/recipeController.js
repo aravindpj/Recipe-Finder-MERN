@@ -26,7 +26,7 @@ exports.getAllrecipe=async (req,res) =>{
 }
 exports.getRecipe=async (req,res) =>{
     const id = req.params.id
-    const data=await Recipe.findById(id).populate('user')
+    const data=await Recipe.findById(id).populate('user').populate('reviews')
     res.status(200).json({status:"success",data})
 }
 exports.getMyrecipe=async (req,res) =>{
